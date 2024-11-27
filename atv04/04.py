@@ -5,7 +5,7 @@ def connect_to_db():
     return psycopg2.connect(
         dbname="join_test",  # Database name
         user="postgres",     # Database user
-        password="join",     # Replace with your password
+        password="join",     # Database password
         host="localhost",    # Host where the database is running
         port="5432"          # Default PostgreSQL port
     )
