@@ -1,4 +1,4 @@
 O layout mais provável é o da opção (C):
 
 O menu aparece flutuado à esquerda (30%).
-O conteúdo é deslocado à direita (35%), sem sobreposição
+O conteúdo é deslocado à direita (35%), sem sobreposição.
