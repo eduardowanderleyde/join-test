@@ -67,4 +67,4 @@ class TargetAPITestCase(TestCase):
         # Test to verify that the map page loads correctly
         response = self.client.get(reverse('map'))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertContains(response, "Mapa de Alvos")  # Checks if the map title is present
+        self.assertContains(response, "Mapa de Alvos")  #Checks if the map title is present
