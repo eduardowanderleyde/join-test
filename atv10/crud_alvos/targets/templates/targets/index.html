@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa de Alvos</title>
+  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkMdmf8lTGIkLpcmEeXtUBA_SuzFJiBPQ&callback=initMap">
+  </script>
+  <style>
+    #map {
+      height: 500px;
+      width: 100%;
+    }
+
+    /* Modal styling */
+    #targetModal {
+      display: none;
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -20%);
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    #modalBackdrop {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    form input {
+      width: 100%;
+      margin-bottom: 16px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    form button {
+      padding: 10px 20px;
+      margin-right: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    form button[type="button"] {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    form button[type="button"]:last-child {
+      background-color: #dc3545;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Mapa de Alvos</h1>
+  <button onclick="openModal()">Novo Alvo</button>
+  <div id="map"></div>
+
+  <!-- Modal -->
+  <div id="modalBackdrop"></div>
+  <div id="targetModal">
+    <h2 id="modalTitle">Novo Alvo</h2>
+    <form id="targetForm">
+      <label for="identifier">Identificador:</label>
+      <input type="text" id="identifier" name="identifier" required>
+
+      <label for="name">Nome:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="latitude">Latitude:</label>
+      <input type="number" step="any" id="latitude" name="latitude" required>
+
+      <label for="longitude">Longitude:</label>
+      <input type="number" step="any" id="longitude" name="longitude" required>
+
+      <label for="expiration_date">Data de Expiração:</label>
+      <input type="date" id="expiration_date" name="expiration_date" required>
+
+      <button type="button" onclick="saveTarget()">Salvar</button>
+      <button type="button" onclick="closeModal()">Cancelar</button>
+    </form>
+  </div>
+
+  <script>
+    // Passando alvos do backend para o frontend
+    const targets = JSON.parse('{{ targets|escapejs }}');
+
+    function initMap() {
+      // Inicializa o mapa
+      const map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: -23.55052, lng: -46.633308 }, // Coordenadas iniciais (São Paulo)
+        zoom: 8, // Nível de zoom
+      });
+
+      // Adiciona marcadores para cada alvo
+      targets.forEach(target => {
+        const marker = new google.maps.Marker({
+          position: { lat: parseFloat(target.latitude), lng: parseFloat(target.longitude) },
+          map: map,
+          title: target.name,
+        });
+      });
+    }
+
+    // Open modal
+    function openModal() {
+      document.getElementById("targetModal").style.display = "block";
+      document.getElementById("modalBackdrop").style.display = "block";
+    }
+
+    // Close modal
+    function closeModal() {
+      document.getElementById("targetModal").style.display = "none";
+      document.getElementById("modalBackdrop").style.display = "none";
+    }
+
+    // Save new target
+    function saveTarget() {
+      const data = {
+        identifier: document.getElementById('identifier').value,
+        name: document.getElementById('name').value,
+        latitude: document.getElementById('latitude').value,
+        longitude: document.getElementById('longitude').value,
+        expiration_date: document.getElementById('expiration_date').value,
+      };
+
+      fetch('/targets/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': '{{ csrf_token }}',
+        },
+        body: JSON.stringify(data),
+      })
+        .then(response => {
+          if (response.ok) {
+            alert('Alvo salvo com sucesso!');
+            location.reload(); // Recarrega a página para atualizar o mapa
+          } else {
+            alert('Erro ao salvar o alvo!');
+          }
+        })
+        .catch(error => {
+          console.error('Erro ao salvar alvo:', error);
+          alert('Erro ao salvar o alvo!');
+        });
+    }
+  </script>
+</body>
+
+</html>
