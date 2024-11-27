@@ -1,14 +1,17 @@
 from django.shortcuts import render
 from .models import Target
 from django.core.serializers import serialize
+from rest_framework.viewsets import ModelViewSet
+from .serializers import TargetSerializer
 import json
 
+# View para renderizar o mapa
 def map_view(request):
     # Busca todos os alvos do banco de dados
     targets = Target.objects.all()
     # Serializa os alvos para JSON
     targets_json = json.loads(serialize('json', targets))
-    # Formats data for simplicity on the frontend
+    # Formata os dados para simplificação no frontend
     formatted_targets = [
         {
             'id': target['pk'],
@@ -20,5 +23,10 @@ def map_view(request):
         }
         for target in targets_json
     ]
-    # Render the template passing the formatted targets
+    # Renderiza o template passando os alvos formatados
     return render(request, 'targets/index.html', {'targets': json.dumps(formatted_targets)})
+
+# API para CRUD de alvos
+class TargetViewSet(ModelViewSet):
+    queryset = Target.objects.all()
+    serializer_class = TargetSerializer
