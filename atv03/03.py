@@ -5,9 +5,9 @@ def organize_object(obj):
         if key not in result:
             result[key] = []
         result[key].append(item['element'])
-    return [result]  # Encapsula o dicionário em uma lista
+    return [result]  # Encapsulates the dictionary in a list
 
-# Teste com o objeto fornecido
+# Test with the provided object
 obj = [{
 "message_tag": "TEMPERATURE_MIN",
 "element_dictionary": "INMET",
