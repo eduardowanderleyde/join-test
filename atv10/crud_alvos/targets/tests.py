@@ -10,7 +10,6 @@ class TargetAPITestCase(TestCase):
 
         # Data for a target
         self.target_data = {
-            "identifier": "T001",
             "name": "Recife",
             "latitude": -8.0476,
             "longitude": -34.877,
@@ -33,7 +32,6 @@ class TargetAPITestCase(TestCase):
     def test_create_target(self):
         # Test to create a new target
         new_target_data = {
-            "identifier": "T002",
             "name": "São Paulo",
             "latitude": -23.55052,
             "longitude": -46.633308,
@@ -46,7 +44,6 @@ class TargetAPITestCase(TestCase):
     def test_update_target(self):
         # Test to update an existing target
         updated_data = {
-            "identifier": "T003",
             "name": "Novo Nome",
             "latitude": -9.0476,
             "longitude": -35.877,

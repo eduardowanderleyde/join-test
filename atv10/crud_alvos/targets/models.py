@@ -1,7 +1,12 @@
 from django.db import models
 
 class Target(models.Model):
-    identifier = models.CharField(max_length=100, unique=True)  # Unique identifier
+    """
+    name: str
+    latitude: float          
+    longitude: float
+    expiration_date: date
+    """
     name = models.CharField(max_length=255)                    # Target name
     latitude = models.FloatField()                             # Latitude
     longitude = models.FloatField()                            # Longitude
