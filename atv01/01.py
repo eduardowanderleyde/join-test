@@ -1,5 +1,5 @@
 def sort_and_find_extremes(lst):
-    # Convert numeric strings to integers
+    # Convert numeric strings to float
     lst = [ float(x) if isinstance(x, str) else x for x in lst]
     
     # Sort the list in descending order
