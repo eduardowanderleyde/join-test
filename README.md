@@ -1,32 +1,54 @@
-# Target Map Project - JOIN Company
+# Target Map Project
 
-## Descrição
+## Description
 
-O **Target Map** é um projeto baseado em Django que permite visualizar alvos (targets) em um mapa interativo utilizando a API do Google Maps. Além disso, o sistema oferece funcionalidades para criar novos alvos com coordenadas geográficas e data de expiração. A aplicação foi construída para demonstrar como integrar dados geoespaciais com um backend Django e uma interface frontend utilizando JavaScript.
+**Target Map** is a Django-based project that allows you to visualize targets on an interactive map using the Google Maps API. Additionally, the system provides functionality to create new targets with geographic coordinates and an expiration date. This application is built to demonstrate how to integrate geospatial data with a Django backend and a frontend interface using JavaScript.
 
-## Funcionalidades
+## Features
 
-- **Exibir Alvos no Mapa**: O mapa é exibido com marcadores representando os alvos cadastrados.
-- **Criar Novos Alvos**: Através de um formulário, o usuário pode adicionar novos alvos com nome, latitude, longitude e data de expiração.
-- **Exibição Dinâmica**: Ao salvar um novo alvo, a página é atualizada automaticamente para mostrar a nova localização no mapa.
+- **Display Targets on Map**: The map displays markers representing the registered targets.
+- **Create New Targets**: Users can add new targets through a form that includes the name, latitude, longitude, and expiration date.
+- **Dynamic Display**: When a new target is saved, the page automatically updates to show the new location on the map.
 
-## Tecnologias Utilizadas
+## Technologies Used
 
-- **Django**: Framework de backend para desenvolvimento web.
-- **PostgreSQL**: Banco de dados relacional utilizado para armazenar os dados dos alvos.
-- **Google Maps API**: Para renderizar o mapa e exibir os marcadores dos alvos.
-- **JavaScript** (com jQuery): Para interações no frontend, como exibição do mapa e manipulação do formulário.
-- **Django REST Framework**: Para criar uma API RESTful que manipula as operações de CRUD para os alvos.
-- **HTML/CSS**: Estrutura e estilo da página.
+- **Django**: Backend framework for web development.
+- **PostgreSQL**: Relational database used to store the target data.
+- **Google Maps API**: Used for rendering the map and displaying target markers.
+- **JavaScript** (with jQuery): Used for frontend interactions, such as map display and form manipulation.
+- **Django REST Framework**: Used to create a RESTful API to handle CRUD operations for targets.
+- **HTML/CSS**: Structure and styling of the page.
 
-## Instalação
+## Installation
 
-### Pré-requisitos
+### Prerequisites
 
 - Python 3.x
 - Django 5.x
-- PostgreSQL (ou outro banco de dados compatível)
+- PostgreSQL (or another compatible database)
 
-### Passos para Rodar o Projeto Localmente
+### Steps to Run the Project Locally
 
-1. **Clone o repositório:**
+1. **Clone the repository:**
+
+```bash
+git clone (https://github.com/eduardowanderleyde/join-test.git
+```
+
+Frontend
+The user interface is rendered in HTML with an interactive map, where targets are shown as geographical markers. The frontend uses JavaScript to send data via fetch to the API and update the map dynamically.
+
+Contributing
+If you would like to contribute to this project, please follow these steps:
+
+Fork the project.
+Create a branch for your feature (git checkout -b feature/new-feature).
+Make your changes and commit them (git commit -am 'Add new feature').
+Push your branch to your fork (git push origin feature/new-feature).
+Open a pull request.
+
+License
+
+
+Contact
+If you have any questions or suggestions, feel free to contact us!
