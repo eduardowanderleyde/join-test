@@ -1,6 +1,6 @@
 def sort_and_find_extremes(lst):
     # Convert numeric strings to integers
-    lst = [int(x) if isinstance(x, str) else x for x in lst]
+    lst = [ float(x) if isinstance(x, str) else x for x in lst]
     
     # Sort the list in descending order
     lst.sort(reverse=True)
