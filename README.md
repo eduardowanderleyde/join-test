@@ -4,6 +4,8 @@
 
 **Target Map** is a Django-based project that allows you to visualize targets on an interactive map using the Google Maps API. Additionally, the system provides functionality to create new targets with geographic coordinates and an expiration date. This application is built to demonstrate how to integrate geospatial data with a Django backend and a frontend interface using JavaScript.
 
+<img width="1511" alt="Captura de Tela 2024-11-29 às 17 34 09" src="https://github.com/user-attachments/assets/8118e069-d571-404c-9ef7-2be4b05f499a">
+
 ## Features
 
 - **Display Targets on Map**: The map displays markers representing the registered targets.
